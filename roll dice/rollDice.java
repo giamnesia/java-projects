@@ -3,11 +3,8 @@ import java.util.Scanner;
 public class rollDice {
 
 	public static void main(String[] args) {
-		int guess;
+		int guess, die1,  die2, sum;
 		int lives= 10;
-		int die1;
-		int die2;
-		int sum;
 		int rolls = 0;
 		String ans=null;
 		
