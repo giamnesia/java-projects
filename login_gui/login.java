@@ -6,16 +6,13 @@ import java.awt.event.ActionListener;
 public class login implements ActionListener {
 	private JFrame frame;
 	private JPanel panel;
-	private JLabel username;
+	private JLabel username, password, alert, attempt;
 	private JTextField usernameField;
-	private JLabel password;
 	private JPasswordField passwordField;
-	private JButton login;
-	private JButton reset;
-	private JLabel alert;
-	private JLabel attempt;
+	private JButton login,reset;
 
 	public login() {
+		
 		frame = new JFrame("Log-in ");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(250, 300);
@@ -68,7 +65,7 @@ public class login implements ActionListener {
 	int  tries= 3;
 
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (e.getSource()==login) {
 			String username = usernameField.getText();
 			String password = passwordField.getText();
@@ -77,21 +74,16 @@ public class login implements ActionListener {
 
 				if (username.equals("admin") && password.equals("123")) {
 					alert.setText("Welcome to your Profile!");
-					return;
+
 				}
 				else if (username.isEmpty() && password.isEmpty()) {
 					alert.setText("Please Input Fields");
-					return;
 
 				} else if (username.isEmpty()) {
 					alert.setText("Please Input Username");
-					return;
-
 
 				} else if (password.isEmpty()) {
 					alert.setText("Please Input Password");
-					return;
-
 				}
 				else {
 					tries--;
@@ -100,17 +92,16 @@ public class login implements ActionListener {
 				}
 			}
 			if (tries== 0){
-				usernameField.setText("");
-				passwordField.setText("");
 				usernameField.setEnabled(false);
 				passwordField.setEnabled(false);
 				reset.setEnabled(false);
 				alert.setText("Please Contact the Administrator");
-
 				JOptionPane.showMessageDialog(null, "Account is Locked ", "Error",
 						JOptionPane.ERROR_MESSAGE);
+				usernameField.setText("");
+				passwordField.setText("");
 			}
-		 }
+		}
 
 		if(e.getSource()==reset){
 			usernameField.setText("");
